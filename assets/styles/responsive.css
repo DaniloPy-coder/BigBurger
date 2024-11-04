@@ -1,0 +1,15 @@
+ @media screen and (min-width: 768px) {
+     .menu-title {
+         font-size: 1.5rem;
+         line-height: 2rem;
+     }
+
+     .content {
+         gap: 2.5rem;
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+     }
+
+     .modal-item {
+         min-width: 600px;
+     }
+ }
