@@ -11,6 +11,25 @@ const spanItem = document.getElementById("date-span");
 
 let cart = [];
 
+const menuLinks = document.querySelectorAll('.navbar a');
+
+menuLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault(); // Previne o comportamento padrão do link
+        const targetId = this.getAttribute('href'); // Pega o ID do alvo
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            // Rola suavemente para a seção correspondente
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+
 // Abrir o modal do carrinho
 cartBtn.addEventListener("click", function () {
     updateCartModal();
@@ -126,17 +145,28 @@ checkoutBtn.addEventListener("click", function () {
         return;
     }
 
-    // Implementar o envio do pedido para o WhatsApp ou API desejada
-    const carItems = cart.map((item) => {
+    //  envio do pedido para o WhatsApp ou API desejada
+    const cartItems = cart.map((item) => {
         return (
             `${item.name} Quantidade: (${item.quantity}) Preço: R$${item.price} |`
         )
-    }).join("")
+    }).join(" | ")
 
-    const message = encodeURIComponent(carItems)
-    const phone = "12992102803"
+    const cartTotal = document.getElementById("cart-total").innerText;
+    const phoneNumber = document.getElementById("msg").value;
+    const address = document.getElementById("address").value;
 
-    window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank")
+    if (!phoneNumber || !address) {
+        alert("Por favor, preencha o número de telefone e o endereço de entrega.");
+    }
+
+    const message = `Pedido:\n\nItens:\n${cartItems.join('\n')}\n\nTotal: R$${cartTotal}\n\nEndereço de entrega: ${address}\n\nTelefone de contato: ${phoneNumber}`;
+
+
+    const encodedmessage = encodeURIComponent(message);
+    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappLink, "_blank")
 });
 
 // Função para verificar horário de funcionamento
@@ -146,7 +176,7 @@ function checkOpeningHours() {
     const diaSemana = data.getDay(); // 0 = Domingo, 1 = Segunda, ..., 6 = Sábado
     // Fechado na segunda-feira (dia 1)
     if (diaSemana === 1) return false;
-    return hora >= 18 && hora < 22;
+    return hora >= 18 && hora < 1;
 }
 
 // Atualizar status de funcionamento
@@ -156,7 +186,7 @@ const diaSemana = new Date().getDay();
 if (isOpen) {
     spanItem.classList.remove("closed");
     spanItem.classList.add("open");
-    spanItem.textContent = "Aberto - Ter à Dom - 18:00 às 22:00";
+    spanItem.textContent = "Aberto - Ter à Dom - 18:00 às 01:00";
 } else {
     spanItem.classList.remove("open");
     spanItem.classList.add("closed");
@@ -164,6 +194,6 @@ if (isOpen) {
     if (diaSemana === 1) {
         spanItem.textContent = "Fechado - Segunda-feira";
     } else {
-        spanItem.textContent = "Fechado - Ter à Dom - 18:00 às 22:00";
+        spanItem.textContent = "Fechado - Ter à Dom - 18:00 às 01:00";
     }
 }

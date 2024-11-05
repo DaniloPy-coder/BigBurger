@@ -4,45 +4,53 @@
     outline: none;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+}
 
-    .btn-add {
-        background-color: rgb(17, 24, 39);
-        padding: 0 1.25rem 0 1.25rem;
-        border-radius: 0.25rem;
-    }
 
-    button {
-        cursor: pointer;
-    }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
-    .item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        justify-content: space-between;
-        margin-top: 0.75rem;
-    }
+.btn-add {
+    background-color: rgb(17, 24, 39);
+    padding: 0 1.25rem 0 1.25rem;
+    border-radius: 0.25rem;
+}
 
-    .item i {
-        color: white;
-    }
+button {
+    cursor: pointer;
+}
 
-    .price {
-        font-size: 1.125rem;
-        line-height: 1.75rem;
-        font-weight: bold;
-    }
+.item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: space-between;
+    margin-top: 0.75rem;
+}
 
-    .name-item,
-    .price-total,
-    .address-modal {
-        font-weight: bold;
-    }
+.item i {
+    color: white;
+}
 
-    .description {
-        font-size: 0.875rem;
-        line-height: 1.25rem;
-    }
+.price {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: bold;
+}
+
+.name-item,
+.price-total,
+.address-modal,
+.number-modal {
+    font-weight: bold;
+}
+
+.description {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
 }
 
 /* Header */
@@ -56,7 +64,74 @@ header {
     background-position: center;
 }
 
+.container-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    padding: 10px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #171515;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    flex: 1;
+    /* Permite que o nav ocupe espaço e ajude na centralização */
+    text-align: center;
+}
+
+.container-menu ul li {
+    display: inline-block;
+    margin: 0 15px;
+    /* Espaço entre os itens do menu */
+    list-style-type: none;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+}
+
+.container-menu .navbar ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.btn-header img {
+    margin: 1rem 1rem 0 0;
+    border-radius: 10px;
+    padding: 2px;
+    width: 45px;
+    /* Tamanho da imagem no botão */
+}
+
+.span-count {
+    position: absolute;
+    background-color: #e9a209;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #fff9ea;
+    width: 20px;
+    height: 20px;
+    right: 10px;
+    /* Coloca o círculo na borda direita */
+    top: 8px;
+    border-radius: 70%;
+}
+
+
 .img-header {
+    margin-top: 3rem;
     width: 8rem;
     height: 8rem;
     border-radius: 8rem;
@@ -84,6 +159,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 5rem;
 }
 
 .location,
@@ -97,6 +173,7 @@ header {
     padding: 0.25rem 1rem 0.25rem 1rem;
     border-radius: 0.5rem;
     margin-top: 1rem;
+    margin-bottom: 8rem;
 }
 
 .open {
@@ -210,6 +287,13 @@ article .drinks-card {
     margin-top: 0.25rem;
     border: 1px solid #ccc;
     transition: border-color 0.3s ease;
+
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .modal-item input:focus {
@@ -278,14 +362,4 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.btn-footer {
-    background: none;
-    border: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: white;
-    font-weight: bold;
 }
