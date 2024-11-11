@@ -14,7 +14,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .navbar ul {
         display: flex;
         align-items: flex-start;
