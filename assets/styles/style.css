@@ -132,6 +132,10 @@ header {
     border-radius: 70%;
 }
 
+body {
+    padding-top: 6rem;
+}
+
 
 .img-header {
     margin-top: 3rem;
@@ -162,7 +166,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 5rem;
+    margin-top: 6rem;
 }
 
 .location,
